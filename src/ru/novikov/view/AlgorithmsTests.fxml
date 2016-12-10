@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.novikov.AlgorithmsTestsController">
+   <children>
+      <TabPane layoutX="160.0" layoutY="28.0" prefHeight="300.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab closable="false" text="IDEA">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="ideaKey" layoutX="10.0" layoutY="23.0" prefHeight="25.0" prefWidth="237.0" />
+                        <Button fx:id="setIdeaKeyButton" layoutX="260.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleIdeaSetKeyButton" text="Set!" />
+                        <TextField fx:id="ideaTextToEncrypt" layoutX="10.0" layoutY="68.0" prefHeight="25.0" prefWidth="237.0" />
+                        <Button fx:id="ideaEncryptButton" layoutX="256.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleIdeaEncryptButton" text="Encrypt!" />
+                        <TextField fx:id="ideaEncryptedText" layoutX="339.0" layoutY="68.0" prefHeight="25.0" prefWidth="258.0" />
+                        <TextField fx:id="ideaTextToDecrypt" layoutX="10.0" layoutY="124.0" prefHeight="25.0" prefWidth="237.0" />
+                        <Button fx:id="ideaDecryptButton" layoutX="255.0" layoutY="124.0" mnemonicParsing="false" onAction="#handleIdeaDecryptButton" text="Decrypt!" />
+                        <TextField fx:id="ideaDecryptedText" layoutX="339.0" layoutY="124.0" onAction="#handleIdeaSetKeyButton" prefHeight="25.0" prefWidth="260.0" />
+                        <Label layoutX="2.0" layoutY="51.0" text="Text to Encrypt:" />
+                        <Label layoutX="334.0" layoutY="51.0" text="Encrypted Byte Array:" />
+                        <Label layoutX="1.0" layoutY="107.0" text="Bytes to Decrypt:" />
+                        <Label layoutX="334.0" layoutY="107.0" text="Decrypted text:" />
+                        <Label layoutX="2.0" layoutY="6.0" text="Secret Key:" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab closable="false" text="RSA">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="rsaE" layoutX="12.0" layoutY="23.0" prefHeight="25.0" prefWidth="188.0" promptText="leave empty to generate" />
+                        <TextField fx:id="rsaFilename" layoutX="203.0" layoutY="23.0" prefHeight="25.0" prefWidth="205.0" promptText="leave empty to generate" />
+                        <TextField fx:id="rsaN" layoutX="411.0" layoutY="23.0" prefHeight="25.0" prefWidth="177.0" promptText="leave empty to generate" />
+                        <Label layoutX="12.0" layoutY="48.0" text="Text to Encrypt:" />
+                        <TextField fx:id="rsaTextToEncrypt" layoutX="12.0" layoutY="65.0" prefHeight="25.0" prefWidth="247.0" />
+                        <Button layoutX="271.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleRsaEncryptButton" text="Encrypt" />
+                        <TextField fx:id="rsaEncryptedBytes" layoutX="338.0" layoutY="65.0" prefHeight="25.0" prefWidth="251.0" />
+                        <Label layoutX="338.0" layoutY="48.0" text="Encrypted Byte Array:" />
+                        <Button layoutX="270.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleRsaDecryptButton" text="Decrypt" />
+                        <TextField fx:id="rsaDecryptedText" layoutX="338.0" layoutY="115.0" prefHeight="25.0" prefWidth="251.0" />
+                        <Label layoutX="338.0" layoutY="98.0" text="Decrypted Text:" />
+                        <Label layoutX="12.0" layoutY="6.0" text="Public Key E:" />
+                        <Label layoutX="408.0" layoutY="6.0" text="Public Key N:" />
+                        <Label layoutX="203.0" layoutY="6.0" text="Name of the file with private key:" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab closable="false" text="MD5">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="6.0" text="Text to get hash:" />
+                        <Label layoutX="342.0" layoutY="6.0" text="Hash:" />
+                        <TextField fx:id="md5Text" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="243.0" />
+                        <Button layoutX="268.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleMd5HashButton" text="Get Hash" />
+                        <TextField fx:id="md5Hash" layoutX="342.0" layoutY="23.0" prefHeight="25.0" prefWidth="247.0" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab closable="false" text="EDS RSA">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="213.0" layoutY="14.0" text="Name of the file with private key:" />
+                        <Label layoutX="426.0" layoutY="14.0" text="Public Key N:" />
+                        <Label layoutX="13.0" layoutY="14.0" text="Public Key E:" />
+                        <Label layoutX="355.0" layoutY="105.0" text="Prototype Text:" />
+                        <TextField fx:id="edsrsaPrototypeText" layoutX="355.0" layoutY="130.0" prefHeight="25.0" prefWidth="230.0" />
+                        <Button layoutX="255.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleEdsrsaGetPrototypeButton" text="Get Prototype" />
+                        <Label layoutX="335.0" layoutY="63.0" text="Signed Byte Array:" />
+                        <TextField fx:id="edsrsaSignedBytes" layoutX="335.0" layoutY="80.0" prefHeight="25.0" prefWidth="251.0" />
+                        <Button layoutX="281.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleEdsrsaSignButton" text="Sign" />
+                        <TextField fx:id="edsrsaTextToSign" layoutX="13.0" layoutY="80.0" prefHeight="25.0" prefWidth="247.0" />
+                        <Label layoutX="14.0" layoutY="63.0" text="Text to Sign:" />
+                        <TextField fx:id="edsrsaN" layoutX="423.0" layoutY="39.0" prefHeight="25.0" prefWidth="177.0" promptText="leave empty to generate" />
+                        <TextField fx:id="edsrsaFilename" layoutX="213.0" layoutY="39.0" prefHeight="25.0" prefWidth="205.0" promptText="leave empty to generate" />
+                        <TextField fx:id="edsrsaE" layoutX="14.0" layoutY="39.0" prefHeight="25.0" prefWidth="188.0" promptText="leave empty to generate" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

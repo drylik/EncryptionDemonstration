@@ -88,37 +88,55 @@ public class AlgorithmsTestsController {
     }
 
     @FXML
-    private void handleIdeaSetKeyButton() throws IOException {
-        if (ideaKey.getText() != null) {
-            ByteArrayInputStream key = new ByteArrayInputStream(ideaKey.getText().getBytes());
-            idea = new Idea(key);
-        } else {
+    private void handleIdeaSetKeyButton() {
+        try {
+            if (ideaKey.getText() != null) {
+                ByteArrayInputStream key = new ByteArrayInputStream(ideaKey.getText().getBytes());
+                idea = new Idea(key);
+            } else {
+                throw new Exception("no key");
+            }
+        } catch (IOException e) {
+            ManyUtils.callMessagBox(mainApp, "Error", "Establishing key error", "Key must have 16 characters.");
+        } catch (Exception e) {
             ManyUtils.callMessagBox(mainApp, "No key entered", "Key field is empty", "Please, enter a non-empty key.");
         }
     }
 
     @FXML
-    private void handleIdeaEncryptButton() throws IOException {
-        if (idea != null) {
-            InputStream data = IOUtils.toInputStream(ideaTextToEncrypt.getText(), StandardCharsets.UTF_8);
-            ByteArrayOutputStream newData = new ByteArrayOutputStream();
-            idea.encrypt(data, newData);
+    private void handleIdeaEncryptButton() {
+        try {
+            if (idea != null) {
+                InputStream data = IOUtils.toInputStream(ideaTextToEncrypt.getText(), StandardCharsets.UTF_8);
+                ByteArrayOutputStream newData = new ByteArrayOutputStream();
+                idea.encrypt(data, newData);
 
-            ideaEncryptedText.setText(ManyUtils.byteArrToStr(newData.toByteArray()));
-        } else {
+                ideaEncryptedText.setText(ManyUtils.byteArrToStr(newData.toByteArray()));
+            } else {
+                throw new Exception("no key");
+            }
+        } catch (IOException e) {
+            ManyUtils.callMessagBox(mainApp, "Error", "Encryption error", "An error has occurred during encrypting.");
+        } catch (Exception e) {
             ManyUtils.callMessagBox(mainApp, "No key set", "The key for encryption has not been set yet", "Please, set the key first.");
         }
     }
 
     @FXML
-    private void handleIdeaDecryptButton() throws IOException {
-        if (idea != null) {
-            ByteArrayInputStream data = new ByteArrayInputStream(ManyUtils.strToByteArr(ideaTextToDecrypt.getText()));
-            ByteArrayOutputStream newData = new ByteArrayOutputStream();
-            idea.decrypt(data, newData);
+    private void handleIdeaDecryptButton() {
+        try {
+            if (idea != null) {
+                ByteArrayInputStream data = new ByteArrayInputStream(ManyUtils.strToByteArr(ideaTextToDecrypt.getText()));
+                ByteArrayOutputStream newData = new ByteArrayOutputStream();
+                idea.decrypt(data, newData);
 
-            ideaDecryptedText.setText(newData.toString());
-        } else {
+                ideaDecryptedText.setText(newData.toString());
+            } else {
+                throw new Exception("no key");
+            }
+        } catch (IOException e) {
+            ManyUtils.callMessagBox(mainApp, "Error", "Decryption error", "An error has occurred during decrypting.");
+        } catch (Exception e) {
             ManyUtils.callMessagBox(mainApp, "No key set", "The key for encryption has not been set yet", "Please, set the key first.");
         }
     }

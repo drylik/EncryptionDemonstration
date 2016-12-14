@@ -206,10 +206,10 @@ public class AlgorithmsTestsController {
     private void handleEdsrsaSignButton() {
         try {
             if (edsrsaN.getText().length() == 0 || edsrsaE.getText().length() == 0 || edsrsaFilename.getText().length() == 0) {
-                edsrsa = new EDSRSA();
+                edsrsa = new EDSRSA("privateEDS.dat");
                 edsrsaE.setText(edsrsa.getE().toString());
                 edsrsaN.setText(edsrsa.getN().toString());
-                edsrsaFilename.setText("private.dat");
+                edsrsaFilename.setText("privateEDS.dat");
             } else {
                 edsrsa = new EDSRSA(new BigInteger(edsrsaE.getText()), new BigInteger(edsrsaN.getText()), edsrsaFilename.getText());
             }
